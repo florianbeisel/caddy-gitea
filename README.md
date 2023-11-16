@@ -1,3 +1,16 @@
+# Anpassungen AllTec
+Fork von [42wim/Caddy-Gitea](https://github.com/42wim/caddy-gitea)
+Anpassungen, damit standardmäßig die `gitea-pages`-Branch genutzt wird für die Pages-Seiten.
+
+Ansonsten wird immer die `main`-Branch genutzt, macht es etwas umständlich:
+1. entweder muss man entsprechend lange URLs nutzen um manuell auf eine andere Branch zu setzen [siehe DNS-Config](#dns-config) oder
+1. man muss immer die Ergebnisse eines Builds in die `main`-Branch pushen. Und muss trotzdem den Ordner, wo die html-Files liegen immer mitführen.
+
+In der `gitea-pages.toml` kann nun auch per `defaultref` die Branch manuell übergeben werden.
+
+***
+***
+
 # caddy-gitea
 
 [Gitea](https://gitea.io) plugin for [Caddy v2](https://github.com/caddyserver/caddy).
