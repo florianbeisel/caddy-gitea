@@ -4,6 +4,8 @@ import (
 	"io"
 	"net/http"
 	"strings"
+	"mime"
+	"fmt"
 
 	"github.com/TA-Tran/caddy-gitea/pkg/gitea"
 	"github.com/caddyserver/caddy/v2"
@@ -102,9 +104,28 @@ func (m Middleware) ServeHTTP(w http.ResponseWriter, r *http.Request, _ caddyhtt
 		return caddyhttp.Error(http.StatusNotFound, err)
 	}
 
+	fs, _ := f.Stat()
+	// ext := ""
+	ext, err := getExtension( fs.Name() )
+	if( err != nil ){
+		mime := mime.TypeByExtension( ext )
+		if( mime != "" ){
+			w.Header().Set("Content-Type", mime)
+		}
+	}
+
 	_, err = io.Copy(w, f)
 
 	return err
+}
+
+func getExtension(filename string) (string, error) {
+	pos := strings.LastIndex(filename, ".");
+	if pos == -1 {
+		return "", fmt.Errorf("Unknown file-extension because no Period-Sign found in filename: %s", filename)
+	}
+	// return with leading Period-Sign
+	return filename[pos:], nil
 }
 
 // Interface guards
