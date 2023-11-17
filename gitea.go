@@ -108,9 +108,9 @@ func (m Middleware) ServeHTTP(w http.ResponseWriter, r *http.Request, _ caddyhtt
 	// ext := ""
 	ext, err := getExtension( fs.Name() )
 	if( err == nil ){
-		mime := mime.TypeByExtension( ext )
-		if( mime != "" ){
-			w.Header().Set("Content-Type", mime)
+		m := mime.TypeByExtension( ext )
+		if( m != "" ){
+			w.Header().Set("Content-Type", m)
 		}
 	}
 
