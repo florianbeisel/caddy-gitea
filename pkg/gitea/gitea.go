@@ -59,6 +59,11 @@ func (c *Client) Open(name, ref string) (fs.File, error) {
 		filepath = "index.html"
 	}
 
+	// Append "index.html" to filepath if it ends with "/"
+	if strings.HasSuffix(filepath, "/") {
+		filepath += "index.html"
+	}
+	
 	// we need to check if the repo exists (and allows access)
 	limited, allowall := c.allowsPages(owner, repo)
 	if !limited && !allowall {
