@@ -1,4 +1,4 @@
-module github.com/TA-Tran/caddy-gitea
+module github.com/florianbeisel/caddy-gitea
 
 go 1.19
 
