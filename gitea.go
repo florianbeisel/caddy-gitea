@@ -7,7 +7,7 @@ import (
 	"mime"
 	"fmt"
 
-	"github.com/TA-Tran/caddy-gitea/pkg/gitea"
+	"github.com/florianbeisel/caddy-gitea/pkg/gitea"
 	"github.com/caddyserver/caddy/v2"
 	"github.com/caddyserver/caddy/v2/caddyconfig/caddyfile"
 	"github.com/caddyserver/caddy/v2/caddyconfig/httpcaddyfile"
